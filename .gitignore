@@ -1,0 +1,15 @@
+# Local user settings with specific machine hostname
+config.json
+.migrated
+
+# Environment variables & secrets (just in case)
+.env
+.env.*
+*.secret
+*.key
+
+# OS & Temporary files
+.DS_Store
+Thumbs.db
+*.log
+*.tmp
