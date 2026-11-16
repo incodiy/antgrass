@@ -1,8 +1,8 @@
 ---
 name: agents-template
 description: Template for creating AGENTS.md project-specific guidelines. Copy to project root and customize for per-project rules, tech stack, and workflows. WAJIB menyertakan Waypoint & Cross-Session section agar AGENTS.md hasil init ter-sync dengan waypoint skill (OVERVIEW.json, WO archival, hard gate).
-version: 1.2.0
-updated: 2026-08-05
+version: 1.3.0
+updated: 2026-11-16
 ---
 
 # AGENTS.md - Project-Specific Guidelines Template
@@ -54,6 +54,12 @@ python scripts/waypoint_check.py --check
 - Tooling project-level (repo scanner, verifier, migrasi, dll) disimpan di `scripts/`.
 - Script executable + didokumentasikan di AGENTS.md section ini.
 - Script di-copy dari `skills/waypoint/scripts/` saat init — jangan edit langsung versi di skill.
+
+### Turnpack MCP Workflow (Multi-File Context & Test-Gated Ship)
+
+- **Context Gathering (`pack`)**: Gunakan tool MCP `pack` dalam **1 panggilan** saat perlu mencari regex/literal sekaligus membaca kode di sekitar temuan (`context`), melihat `git_status`, melakukan listing glob, atau membaca `>= 2` file/simbol fungsi sekaligus.
+- **Atomic Multi-File Edit & Verify (`ship`)**: Gunakan tool MCP `ship` dalam **1 panggilan** saat mengedit `>= 2` file sekaligus atau saat melakukan perubahan kode yang wajib lulus *test* / *typecheck*. Sertakan parameter `verify` sesuai *tech stack* proyek (`go test ./...`, `pytest`, `npm test`, `npx tsc --noEmit`, `cargo check`, atau `php artisan test`). Jika hasil `FAILED_AND_ROLLED_BACK`, seluruh file sudah otomatis dikembalikan *byte-exact* — perbaiki edit berdasarkan output error dan panggil `ship` kembali.
+- **Bulk Repo Inspection (`batch`)**: Gunakan tool MCP `batch` (parameter `code`) untuk menjalankan kueri atau skrip analisis *read-only* lintas banyak file sekaligus di dalam repositori.
 
 ---
 

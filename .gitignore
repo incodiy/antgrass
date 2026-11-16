@@ -13,3 +13,5 @@ config.json
 Thumbs.db
 *.log
 *.tmp
+
+projects/*

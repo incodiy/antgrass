@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "turnpack": {
+      "command": "C:\\Program Files\\nodejs\\node.exe",
+      "args": [
+        "C:\\Users\\wisnu\\.turnpack\\versions\\0.2.0\\dist\\cli.js",
+        "serve"
+      ],
+      "env": {
+        "TURNPACK_LOG": "C:\\Users\\wisnu\\.turnpack\\turnpack-calls.jsonl"
+      }
+    }
+  }
+}
